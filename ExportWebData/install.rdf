@@ -1,0 +1,30 @@
+<?xml version="1.0"?> 
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#"> 
+
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>supt58@rediffmail.com</em:id>
+		<em:name>ExportWebData</em:name>
+		<em:version>1.0</em:version>	
+		<em:type>2</em:type>	
+		<em:unpack>true</em:unpack>
+		<em:description>Export webdata by email or FTP.</em:description>
+		<em:creator>Supt58</em:creator>
+		<em:optionsURL>chrome://exportwebdata/content/options.xul</em:optionsURL>
+		<em:targetPlatform>WINNT_x86-msvc</em:targetPlatform>
+
+		<em:iconURL>chrome://exportwebdata/skin/btn_small.png</em:iconURL>
+		<em:icon64URL>chrome://exportwebdata/skin/btn_large.png</em:icon64URL>
+
+		<em:targetApplication> <!-- firefox -->
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>3.6</em:minVersion>
+				<em:maxVersion>20.*</em:maxVersion>
+			</Description>
+
+		</em:targetApplication>
+
+	</Description> 
+
+</RDF> 

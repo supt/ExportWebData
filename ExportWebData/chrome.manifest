@@ -1,0 +1,9 @@
+content   exportwebdata   chrome/content/
+
+overlay   chrome://browser/content/browser.xul  chrome://exportwebdata/content/browseroverlay.xul
+
+skin      exportwebdata classic/1.0  chrome/skin/
+
+resource exportwebdata resources/
+
+locale	exportwebdata	en-US	chrome/locale/en-US/

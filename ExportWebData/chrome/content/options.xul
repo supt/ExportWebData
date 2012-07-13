@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://exportwebdata/skin/swcoptions.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://exportwebdata/locale/options.dtd">
+
+<dialog 
+id="swc-options-dialog" 
+title="&windowtitle;" 
+xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+buttons="accept"
+ondialogaccept="return exportWebDataOptions.handleAccept();">
+
+<tabbox id="swc-options-tab">
+  <tabs>
+    <tab label="&tab-program-settings-title;"/>
+    <tab label="&tab-email-recipients-title;"/>
+    <tab label="&tab-ftp-recipients-title;"/>
+    <tab label="&tab-content-setup-title;"/>
+    <tab label="&tab-help-title;"/>
+  </tabs>
+<tabpanels>
+<tabpanel> <!-- Program Settings -->
+  <vbox flex="1">
+   <groupbox flex="1">
+     <caption label="&gbcaption-email;"/>
+	 <vbox flex="1">
+	   <label flex="1">&email-program-label1;<span class="swc-url swc-url2" onclick="window.open('http://www.muquit.com/muquit/software/mailsend/mailsend.html');" tooltiptext="http://www.muquit.com/muquit/software/mailsend/mailsend.html">mailsend</span>&email-program-label2;</label>
+	   <hbox>
+		 <textbox id="swc-mailclient-txtpath" flex="1" value="" editable="true"/>
+		 <button id="swc-mailclient-btnbrowse" label="&email-program-browse;" oncommand="exportWebDataOptions.browseForFile('swc-mailclient-txtpath', 'mailsend');"/>
+	   </hbox>
+
+	  <grid flex="1">
+	    <columns>
+	      <column/>
+	      <column flex="5"/>
+	    </columns>
+	    <rows>
+		 <row>
+		   <label>&email-smtp-address;*:</label>
+		   <textbox id="swc-mailclient-txthost" data-required="true" tooltiptext="Test tooltip"/>
+		 </row>
+		 <row>
+		   <label>&email-email-address;*: </label>
+		   <textbox id="swc-mailclient-txtuser" data-required="true"/>
+		 </row>
+		 <row>
+		   <label>&email-email-name;: </label>
+		   <textbox id="swc-mailclient-txtname"></textbox>
+		 </row>
+		 <row>
+		   <label>&email-email-password;:</label> 
+		   <textbox id="swc-mailclient-txtpass" type="password" />
+		 </row>
+		 <row>
+	 	   <label>&email-smtp-port;:</label>
+		   <textbox id="swc-mailclient-txtport" data-validation-regex="^[0-9]*$" />
+		 </row>
+		<hbox>
+		  <radiogroup id="swc-mailclient-rgsecurity">
+			<radio id="swc-mailclient-rbstarttls" value="starttls" label="StartTLS" checked="true" />
+			<radio id="swc-mailclient-rbssl" value="ssl" label="SSL" />
+		  </radiogroup>
+		</hbox>
+		</rows>
+	  </grid>
+	 </vbox>
+					 
+   </groupbox>
+	 
+	 <groupbox flex="1">
+	 <caption label="&gbcaption-ftp;"/>
+	 <vbox flex="1">
+	   <label>&ftp-program-label1;<span class="swc-url swc-url2" onclick="window.open('http://wput.sourceforge.net/');" tooltiptext="http://wput.sourceforge.net/">wput</span>&ftp-program-label2;</label>
+	   <hbox>
+		 <textbox id="swc-ftpclient-txtpath" flex="1" value="" editable="true"/>
+		 <separator />
+		 <button id="swc-ftpclient-btnbrowse" label="&ftp-program-browse;"  oncommand="exportWebDataOptions.browseForFile('swc-ftpclient-txtpath', 'wput')"/>
+	   </hbox>
+	 </vbox>
+	 </groupbox>
+  <label flex="20"/>
+  </vbox>
+</tabpanel>
+
+
+<tabpanel width="500"> <!-- Email Recipients -->
+  <groupbox flex="1">
+  <caption label="&gbcaption-email-recipients;"/>
+    <vbox flex="1" >
+      <hbox align="center" flex="1">
+        <textbox id="swc-email-recipients-textbox" flex="1" data-validation-regex="^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})$"/>
+	  </hbox>
+	  <hbox class="swc-buttons-panel" >
+	    <button id="email-recipients-add" label="&email-recipients-add;" oncommand="exportWebDataOptions.processEmail(-1)"/>
+	    <button id="email-recipients-delete" label="&email-recipients-delete;" oncommand="exportWebDataOptions.delEmail()" disabled="true"/>
+	    <button id="email-recipients-edit" label="&email-recipients-edit;" oncommand="exportWebDataOptions.updateEmailButtonsForEdit(true)" disabled="true"/>
+	    <button id="email-recipients-update" label="&email-recipients-update;" oncommand="exportWebDataOptions.processEmail(this.swcTargetIndex)" disabled="true" hidden="true"/>
+	    <button id="email-recipients-editcancel" label="&email-recipients-editcancel;" oncommand="exportWebDataOptions.updateEmailButtonsForEdit(false)" disabled="true"  hidden="true"/>
+	  </hbox>
+	  <hbox flex="20" >
+		<listbox id="swc-email-recipients-listbox" seltype="multiple" flex="1" >
+		  <listhead>
+			<listheader label="&email-recipients-colheader;"/>
+		  </listhead>
+		</listbox>
+      </hbox>
+    </vbox>
+  </groupbox> 
+</tabpanel>
+
+
+<tabpanel width="500" id="swc-ftp-recipients-panel"> <!-- FTP Recipients -->
+  <vbox flex="1" >
+   <groupbox flex="1">
+    <caption label="&gbcaption-ftp-recipients;"/>
+	 <grid id="swc-ftp-recipients-grid" flex="1">
+	  <columns>
+		  <column/>
+		  <column flex="5"/>
+	  </columns>
+	  <rows>
+		 <row>
+		   <label>&ftp-recipients-url;*:</label>
+		   <textbox id="swc-ftp-recipients-txturl" data-required="true" data-validation-regex="^(ftp(s?)\:\/\/)?[a-zA-Z0-9\-\._]+(\.[a-zA-Z0-9\-\._]+){2,}\/?$"/>
+		 </row>
+		 <row>
+		   <label>&ftp-recipients-path;:</label>
+		   <textbox id="swc-ftp-recipients-txtpath" data-validation-regex1=""/>
+		 </row>
+		 <row>
+		   <label control="login" value="&ftp-recipients-username;*:" /> 
+		   <textbox id="swc-ftp-recipients-txtusername" data-validation-regex1="^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$"/>
+		 </row>
+		 <row>
+		   <label value="&ftp-recipients-password;*:" />
+		   <textbox id="swc-ftp-recipients-txtpassword" data-validation-regex="^.+$" type="password"/>
+		 </row>
+	  </rows>
+	 </grid>
+	 <hbox flex="1" class="swc-buttons-panel">
+	   <hbox align="left">
+		   <checkbox id="swc-ftp-recipients-chkanonymous" label="&ftp-recipients-anonymous;" />
+		   <checkbox id="swc-ftp-recipients-chkforcetls" label="&ftp-recipients-forcetls;" />
+       </hbox>
+	   <hbox align="right" flex="1" >
+		 <button id="ftp-recipients-add"  label="&ftp-recipients-add;" oncommand="exportWebDataOptions.processFtpLogin(-1)"/>
+		 <button id="ftp-recipients-delete" label="&ftp-recipients-delete;" oncommand="exportWebDataOptions.delFtpLogin()" disabled="true"/>
+		 <button id="ftp-recipients-edit" label="&ftp-recipients-edit;" oncommand="exportWebDataOptions.updateFtpLoginButtonsForEdit(true)" disabled="true"/>
+		 <button id="ftp-recipients-update" label="&ftp-recipients-update;" oncommand="exportWebDataOptions.processFtpLogin(this.swcTargetIndex)" disabled="true" hidden="true"/>
+		 <button id="ftp-recipients-editcancel" label="&ftp-recipients-editcancel;" oncommand="exportWebDataOptions.updateFtpLoginButtonsForEdit(false)" disabled="true"  hidden="true"/>
+       </hbox>
+	 </hbox>
+
+
+	 <hbox flex="20" >
+		<tree id="swc-ftp-recipients-tree" seltype="multiple" flex="1" >
+		  <treecols>
+			<!--removed debug code-->
+			<treecol persist="width" label="&ftp-recipients-colheaderurl;" id="swc-ftp-recipients-colheaderurl" flex="4"/>
+			<splitter class="tree-splitter" />
+			<treecol persist="width" label="&ftp-recipients-colheaderpath;" id="swc-ftp-recipients-colheaderpath" flex="2"/>
+			<splitter class="tree-splitter" />
+			<treecol persist="width" label="&ftp-recipients-colheaderusername;" id="swc-ftp-recipients-colheaderusername" flex="2"/>
+			<splitter class="tree-splitter" />
+			<treecol persist="width" label="&ftp-recipients-colheaderpassword;" id="swc-ftp-recipients-colheaderpassword" flex="2"/>
+			<splitter class="tree-splitter" />
+			<treecol persist="width" label="&ftp-recipients-colheaderanonymous;" id="swc-ftp-recipients-colheaderanonymous" type="checkbox"/>
+			<splitter class="tree-splitter" />
+			<!--
+			<treecol persist="width" label="&ftp-recipients-colheaderforcetls;" id="swc-ftp-recipients-colheaderforcetls" type="checkbox"/>
+			-->
+		  </treecols>
+		  <treechildren />
+		</tree>
+     </hbox>
+  </groupbox> 
+ </vbox>
+</tabpanel>
+
+
+<tabpanel width="500" id="swc-content-setup-panel"> <!-- User Defined Content -->
+  <vbox flex="1" >
+   <groupbox flex="1">
+    <caption label="&gbcaption-content-setup;"/>
+	 <grid id="swc-content-setup-grid" flex="1">
+	  <columns>
+		  <column/>
+		  <column flex="5"/>
+	  </columns>
+	  <rows>
+		 <row>
+		   <label value="&content-setup-url;*:" />
+		   <textbox id="swc-content-setup-txturl" data-required="true"/>
+		 </row>
+		 <row>
+		   <label value="&content-setup-tag;:" />
+		   <vbox flex="1">
+		     <textbox id="swc-content-setup-txtxpath" flex="1"/>
+		     <label value="&content-setup-taghint;" flex="1"/>
+		   </vbox>
+		 </row>
+		 <row>
+		   <label>&content-setup-emailaddresses;:</label>
+		   <hbox flex="1">
+		     <textbox id="swc-content-setup-txtemails" flex="2" readonly="true"/>
+			 <button id="swc-content-setup-btnemails" label="..." class="swc-small-button"/>
+		   </hbox>
+		 </row>
+		 <row>
+		   <label>&content-setup-ftpurls;:</label>
+		   <hbox flex="1">
+		     <textbox id="swc-content-setup-txtftps" flex="2" readonly="true"/>
+			 <button id="swc-content-setup-btnftps" label="..." class="swc-small-button" />
+		   </hbox>
+		 </row>
+	     <hbox align="right" flex="1" class="swc-buttons-panel">
+		   <button id="content-setup-add"  label="&content-setup-add;" oncommand="exportWebDataOptions.processTag(-1)"/>
+		   <button id="content-setup-delete" label="&content-setup-delete;" oncommand="exportWebDataOptions.delTag();" disabled="true"/>
+		   <button id="content-setup-edit" label="&content-setup-edit;" oncommand="exportWebDataOptions.updateTagButtonsForEdit(true)" disabled="true"/>
+		   <button id="content-setup-update" label="&content-setup-update;" oncommand="exportWebDataOptions.processTag(this.swcTargetIndex)" disabled="true" hidden="true"/>
+		   <button id="content-setup-editcancel" label="&content-setup-editcancel;" oncommand="exportWebDataOptions.updateTagButtonsForEdit(false)" disabled="true"  hidden="true"/>
+	     </hbox>
+	  </rows>
+	 </grid>
+
+
+	 <hbox flex="20" >
+		<tree id="swc-content-setup-tree" seltype="multiple" flex="1" rows="20">
+		  <treecols>
+			<!--removed debug code-->
+			<treecol persist="width" label="&content-setup-colheaderurl;" id="swc-content-setup-colheaderurl" flex="2"/>
+			<splitter class="tree-splitter" />
+			<treecol persist="width" label="&content-setup-colheadertag;" id="swc-content-setup-colheadertag"  flex="3"/>
+			<splitter class="tree-splitter" />
+			<treecol persist="width" label="&content-setup-colheaderemails;" id="swc-content-setup-colheaderemails" flex="2"/>
+			<splitter class="tree-splitter" />
+			<treecol persist="width" label="&content-setup-colheaderftpurls;" id="swc-content-setup-colheaderftpurls"  flex="1"/>
+		  </treecols>
+		  <treechildren />
+		  </tree>	
+     </hbox>
+  </groupbox> 
+ </vbox>
+</tabpanel>
+
+
+<tabpanel width="500" id="swc-content-setup-panel"> <!-- Help panel -->
+<groupbox height="500" flex="1" style="overflow:auto">
+<vbox flex="1">
+
+
+<label>The ExportWebData extension allows you to send website content by either Email and/or FTP. Extension functionality requires either Email client -or- FTP setup.</label>
+ 
+<label class="help-h1">PROGRAM SETTINGS</label>
+<label class="help-h2">&gt;&gt;&gt;&gt;&gt; SET UP YOUR EMAIL CLIENT</label>
+<label>
+1. Email Settings
+</label>
+<label>
+To begin: Program Settings &gt; Email Settings &gt; click on the hyperlinked "mailsend".
+</label>
+<label>
+Under downloads, locate the file that best matches your operating system to start the download.
+</label>
+<label>
+The download will be a .zip file that you need to extract.
+</label>
+<label>
+Under Program Settings &gt; Email Settings &gt; Click "Browse" to locate the extracted .exe file.
+</label>
+<label>
+2. Outgoing Mail Server (SMTP)
+</label>
+<label>
+Enter the Outgoing mail server (SMTP) details for your email account. Depending on you email service provider, you may need to enter one of the following outgoing SMTP servers:
+</label>
+ 
+	  <grid flex="1">
+	    <columns>
+	      <column />
+	      <column />
+	    </columns>
+	    <rows>
+		 <row><label>AOL </label><label>smtp.aol.com</label></row>
+		 <row><label>AT&amp;T</label><label>mailhost.worldnet.att.net</label></row>
+		 <row><label>AT&amp;T Business Internet Service</label><label>mail.attbi.com</label></row> 
+		 <row><label>Comcast</label><label>smtp.comcast.net</label></row>
+		 <row><label>Comcast / ATTBI</label><label>smtp.comcast.net </label></row>
+		 <row><label>CompuServ</label><label>smtp.site1.csi.com</label></row>
+		 <row><label>CompuServe Classic</label><label>mail.compuserve.com</label></row> 
+		 <row><label>EarthLink</label><label>mail.earthlink.net </label></row>
+		 <row><label>Gmail</label><label>smtp.gmail.com</label></row>
+		 <row><label>Hotmail/Live</label><label>smtp.live.com</label></row>
+		 <row><label>MSN</label><label>smtp.email.msn.com</label></row> 
+		 <row><label>Netscape</label><label>smtp.isp.netscape.com</label></row> 
+		 <row><label>SprintPCS</label><label>smtp.sprintpcs.com </label></row>
+		 <row><label>Verizon</label><label>outgoing.verizon.net</label></row>
+		 <row><label>Yahoo</label><label>smtp.mail.yahoo.com</label></row>
+     </rows>
+     </grid> 
+
+<label class="help-note">
+Note: For a list of other outgoing mail servers please visit <span class="swc-url-normal" onclick="window.open('http://www.emailaddressmanager.com/tips/mail-settings.html');">http://www.emailaddressmanager.com/tips/mail-settings.html</span>
+</label>
+
+<label>3. Enter your email address</label>
+<label>4. Enter your full name</label>
+<label>5. Enter the password associated with your email account</label>
+<label>6. Use outgoing mail server port -or- optionally use default port (25)</label>
+<label class="help-h2">&gt;&gt;&gt;&gt;&gt; SET UP YOUR FTP</label>
+<label>
+1. FTP Upload Program
+</label>
+<label>
+To begin: Program Settings &gt; Email Settings &gt; click on the hyperlinked "wput".
+ 
+</label>
+<label>
+2. Under Download Wput, click on the file the best matches your system to start the download.
+</label>
+<label>
+Locate the downloaded .zip file and extract.
+</label>
+<label>
+Under Program Settings &gt; Email Settings &gt; Click "Browse" to locate the extracted .exe file.
+</label>
+
+<label class="help-h1">EMAIL RECIPIENTS</label>
+<label class="help-h2">&gt;&gt;&gt;&gt;&gt; ADD EMAIL ADDRESSES</label>
+<label>
+- Enter the email address of the recipient and click Add.
+</label>
+<label>
+- To edit, click the email address to highlight. Click edit to modify then update to apply the change.
+</label>
+<label>
+- To delete, click the email address to highlight. Click delete to remove. Confirm by clicking ok.
+</label>
+
+<label class="help-note">
+Note: You can choose at a later time which of the email accounts you have added that you would like to exportwebdata to.
+</label>
+
+<label class="help-h1">FTP RECIPIENTS</label>
+<label class="help-h2">&gt;&gt;&gt;&gt;&gt; ADD FTP RECIPIENTS</label>
+<label>
+- Enter the FTP URL
+</label>
+<label>
+- FTP Path is optional
+</label>
+<label>
+- Enter The username and password. Click add.
+</label>
+
+<label class="help-note">
+Note: If FTP login anonymous, use the checkbox provided. 
+</label>
+
+<label>
+- To edit, click the FTP URL to highlight. Click edit to modify then update to apply the change.
+</label>
+<label>
+- To delete, click the FTP URL to highlight. Click delete to remove. Confirm by clicking ok.
+</label>
+
+<label class="help-h1">USER DEFINED CONTENT</label>
+<label class="help-h2">&gt;&gt;&gt;&gt;&gt; Define Tag</label>
+<label>
+- User defined content can be added by highlighting any part of a webpage.
+- Once content is highlighted/selected, right-click and click "Add to ExportWebData - Define Tag".
+</label>
+
+<label class="help-h2">&gt;&gt;&gt;&gt;&gt; Select Recipients</label>
+<label>Select Email and/or FTP recipients by using the provided checkboxes. Then click "ok".</label>
+<label class="help-note">Note: Clicking "ok" does not Export Web Data. Please follow the step below to send content.
+</label>
+
+<label class="help-h1">
+HOW TO EXPORT WEB DATA
+</label>
+<label>
+- Once you completed all the steps listed above,  return to the webpage URL where you previously defined content and click the "ExportWebData" icon 
+<span class="smallicon"><span>..</span></span>. The real-time webpage content will be sent to the specified recipients.
+</label>
+
+
+
+</vbox>
+</groupbox>
+
+</tabpanel>
+
+</tabpanels>
+</tabbox>
+
+<script type="application/x-javascript" src="chrome://exportwebdata/content/options.js"/>
+
+</dialog>

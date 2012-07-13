@@ -1,0 +1,14 @@
+@import url('tree.css');
+
+#swc-definetag #swc-grid1 rows row>label
+{
+	width: 5.5em;
+	min-width: 5.5em;
+	padding-top:.7em;
+}
+
+#swc-definetag #swc-grid1 rows row>textbox
+{
+	width: 40em;
+	min-width: 40em;
+}

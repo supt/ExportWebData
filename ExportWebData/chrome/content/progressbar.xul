@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog 
+	id="swc-progressbar" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  title="ExportWebData - Sending"
+	buttons=","
+  persist="width height"
+  width="600"
+  height="500"
+>
+  <groupbox flex="1">
+  <vbox flex="1">
+     <separator  />
+      <label>Please wait while this page is being sent.</label>
+     <separator  />
+      <groupbox style="min-width: 300px;" flex="1">
+        <caption>Progress</caption>
+        <vbox flex="1">
+        <vbox>
+            <progressmeter id="swc-progressmeter" mode="determined" flex="1" value="0" max="0"/>
+        </vbox>
+       <separator  />
+        <tree id="swc-progressbar-tree" flex="20" >
+          <treecols>
+          <treecol label="Type" id="swc-progressbar-coltype" width="70"/>
+          <splitter class="tree-splitter" />
+          <treecol label="Data" id="swc-progressbar-coldata" flex="1"/>
+          <splitter class="tree-splitter" />
+          <treecol label="Status" id="swc-progressbar-colstatus" width="50"/>
+          <splitter class="tree-splitter" />
+          <treecol label="Message" id="swc-progressbar-colmessage" flex="1"/>
+          <treecol label="Log" id="swc-progressbar-collog" type="button" />
+          </treecols>
+          <treechildren />
+        </tree>
+        </vbox>
+     </groupbox>
+     <separator  />
+     <label>Note:</label>
+     <label>This may take several seconds depending on page size and recipients list</label>
+     <separator  />
+     <hbox align="right">
+      <hbox flex="1">
+        <label id="swc-progress-lblautocloseinfo1" hidden="true">This window will auto-close in</label>
+        <label id="swc-progress-lblautocloseinfo2" flex="1"/>
+        <button id="swc-progress-btnok" disabled="true" label="Close" onclick="window.close()"/>
+      </hbox>
+     </hbox>
+
+  </vbox>
+
+ </groupbox>
+
+   <script type="application/x-javascript" src="chrome://exportwebdata/content/progressbar.js"/>
+
+</dialog>

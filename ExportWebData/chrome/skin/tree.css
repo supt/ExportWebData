@@ -1,0 +1,7 @@
+/* default style for checkbox column */
+treechildren::-moz-tree-checkbox(checked) { list-style-image: url("chrome://global/skin/checkbox/cbox-check.gif"); }
+
+/*custom style for editable checkbox column */
+#swc-ftp-recipients-colheadersel {width:25px;}
+treechildren::-moz-tree-checkbox(green-check-box) { background: url('gr_custom-inputs.png') 0 -1px no-repeat; }
+treechildren::-moz-tree-checkbox(green-check-box, checked) { list-style-image:none; background-position: 0 -81px; }

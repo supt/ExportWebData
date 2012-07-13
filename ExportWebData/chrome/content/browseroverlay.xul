@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - ***** END LICENSE BLOCK ***** -->
+ 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://exportwebdata/skin/exportwebdata.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://exportwebdata/locale/browseroverlay.dtd">
+
+<overlay id="swc-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <broadcasterset>
+      <broadcaster id="exportwebdata-sendcommandbroadcaster" label="&exportwebdata-sendcommand-label;" command="exportwebdata-sendcommand"/>
+    </broadcasterset>
+
+    <popupset id="mainPopupSet">
+      <panel id="exportwebdata-panel" titlebar="normal" label="&exportwebdata-panel-title;">
+        <vbox id="exportwebdata-panel-container" flex="1">
+          <hbox align="right" flex="1">
+            <label flex="1" class="swc-panel-label">&exportwebdata-panel-hint1;</label>
+            <button id="exportwebdata-panel-btnclose" onclick="document.getElementById('exportwebdata-panel').hidePopup()" label="X" />
+          </hbox>
+          <label flex="1" class="swc-panel-label">&exportwebdata-panel-hint2;</label>
+          <label flex="1" class="swc-panel-label">&exportwebdata-panel-hint3;</label>
+        </vbox>
+      </panel>
+    </popupset>
+
+
+   <commandset id="mainCommandSet">
+      <command id="exportwebdata-selectcommand" oncommand="exportWebData.selector.startSelection();" />
+      <command id="exportwebdata-sendcommand" oncommand="exportWebData.sendContent();" />
+      <command id="exportwebdata-optionscommand" oncommand="window.openDialog('chrome://exportwebdata/content/options.xul','showOptions','centerscreen, chrome, resizable, modal');" />
+   </commandset>
+
+   <!-- Context Menu -->
+   <popup id="contentAreaContextMenu">
+      <menuseparator />
+      <menuitem id="exportwebdata-contentcontextmenu-select" label="&exportwebdata-selectcommand-label;" 
+               class="menuitem-iconic" command="exportwebdata-selectcommand" />
+   </popup>
+
+   <script type="application/x-javascript" src="chrome://exportwebdata/content/browseroverlay.js"/>
+
+
+  <menupopup id="menu_ToolsPopup">
+    <menu id="exportwebdata-toolsmenu-popup" label="&exportwebdata-toolsmenupopup-label;">
+      <menupopup>
+        <menuitem id="exportwebdata-toolsmenu-select" label="&exportwebdata-selectcommand-label;" command="exportwebdata-selectcommand" />
+        <menuitem id="exportwebdata-toolsmenu-send" observes="exportwebdata-sendcommandbroadcaster" />
+        <menuseparator />
+        <menuitem id="exportwebdata-toolsmenu-options" label="&exportwebdata-optionscommand-label;" command="exportwebdata-optionscommand" />
+      </menupopup>
+    </menu>
+  </menupopup>
+
+<toolbarpalette id="BrowserToolbarPalette">
+  <toolbarbutton id="exportwebdata-toolbarbutton-send" 
+    class="toolbarbutton-1 swc-grayscale" 
+    image="chrome://exportwebdata/skin/btn_small.png"
+    observes="exportwebdata-sendcommandbroadcaster" />
+</toolbarpalette>
+
+</overlay>

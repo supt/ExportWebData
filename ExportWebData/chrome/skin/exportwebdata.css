@@ -1,0 +1,12 @@
+/*  skin/toolbar-button.css  */
+#exportwebdata-toolbarbutton-send {
+  list-style-image: url(chrome://exportwebdata/skin/btn_small.png);
+}
+
+#navigator-toolbox #exportwebdata-toolbarbutton-send {
+  list-style-image: url(chrome://exportwebdata/skin/btn_small.png);
+}
+
+#navigator-toolbox[iconsize=large][mode=icons] #exportwebdata-toolbarbutton-send {
+  list-style-image: url(chrome://exportwebdata/skin/btn_large.png);
+}

@@ -1,0 +1,5 @@
+<!ENTITY select-email-recipients-windowtitle	"ExportWebData - Select Email Recipients">
+
+<!ENTITY gbcaption-recipients-email	"Recipients">
+
+<!ENTITY email-recipients-colheader	"Email Address">

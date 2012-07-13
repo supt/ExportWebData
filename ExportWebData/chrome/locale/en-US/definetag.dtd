@@ -1,0 +1,20 @@
+<!ENTITY windowtitle	"ExportWebData - Define Tag">
+<!ENTITY content-url	"URL">
+<!ENTITY content-tag	"Content Tag">
+<!ENTITY gbcaption-recipients	"Recipients">
+<!ENTITY chkEmail-label	"Email">
+<!ENTITY chkFtp-label	"FTP">
+
+
+<!ENTITY email-recipients-colheader	"Email Address">
+
+
+<!ENTITY ftp-recipients-colheaderurl	"FTP Url">
+<!ENTITY ftp-recipients-colheaderpath	"FTP Path">
+<!ENTITY ftp-recipients-colheaderusername	"User Name">
+<!ENTITY ftp-recipients-colheaderpassword	"Password">
+<!ENTITY ftp-recipients-colheaderanonymous	"IsAnonymous">
+
+
+<!ENTITY gbcaption-ftp-recipients	"Add FTP recipients:">
+

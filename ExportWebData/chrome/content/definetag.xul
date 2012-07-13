@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://exportwebdata/skin/definetag.css" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://exportwebdata/locale/definetag.dtd">
+
+<dialog 
+	id="swc-definetag" 
+	title="&windowtitle;" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept"
+    persist="width height"
+	ondialogaccept="return exportWebDataTagDefiner.handleAccept();">
+
+<vbox flex="1">
+ <groupbox style="min-width: 100px;" flex="1">
+
+<vbox>
+  <grid flex="1" id="swc-grid1">
+    <columns>
+      <column/>
+      <column flex="5"/>
+    </columns>
+    <rows>
+	 <row>
+	   <label>&content-url;</label>
+	   <textbox id="swc-dt-contenturl" data-required="true"/>
+	 </row>
+	 <row>
+	   <label>&content-tag; </label>
+	   <textbox id="swc-dt-contenttag" />
+	 </row>
+	</rows>
+  </grid>
+</vbox>
+
+ <groupbox style="min-width: 100px;" flex="1">
+  <caption label="&gbcaption-recipients;"/>
+
+  <grid flex="1">
+    <columns>
+      <column flex="1"/>
+      <column flex="2"/>
+    </columns>
+    <rows>
+	 <row>
+	 	<checkbox id="swc-dt-chkEmail" label="&chkEmail-label;" checked="true" onclick="exportWebDataTagDefiner.handleChkClicked(this, 'swc-dt-lsbEmail')"/>
+	 	<checkbox id="swc-dt-chkFtp" label="&chkFtp-label;"  checked="true" onclick="exportWebDataTagDefiner.handleChkClicked(this, 'swc-ftp-recipients-tree')"/>
+	 </row>
+	 <row flex="1">
+		<listbox id="swc-dt-lsbEmail" rows="13" flex="1" width="20">
+		  <listhead>
+			<listheader label="&email-recipients-colheader;"/>
+		  </listhead>
+		  <listcols>
+			<listcol flex="1"/>
+		  </listcols>
+		</listbox>
+		<tree id="swc-ftp-recipients-tree" editable="true" rows="12" flex="1">
+		  <treecols>
+			<treecol id="swc-ftp-recipients-colheadersel" editable="true" type="checkbox" ignoreincolumnpicker="true" fixed="true"/>
+			<!--removed debug code-->
+			<treecol label="&ftp-recipients-colheaderurl;" editable="false" id="swc-ftp-recipients-colheaderurl" flex="4"/>
+			<splitter class="tree-splitter" />
+			<treecol label="&ftp-recipients-colheaderpath;" editable="false" id="swc-ftp-recipients-colheaderpath" flex="2" hidden="true"/>
+			<splitter class="tree-splitter" />
+			<treecol label="&ftp-recipients-colheaderusername;" editable="false" id="swc-ftp-recipients-colheaderusername" flex="2" hidden="true"/>
+			<splitter class="tree-splitter" />
+			<treecol label="&ftp-recipients-colheaderpassword;" editable="false" id="swc-ftp-recipients-colheaderpassword" flex="2" hidden="true"/>
+			<splitter class="tree-splitter" />
+			<treecol label="&ftp-recipients-colheaderanonymous;" editable="false" id="swc-ftp-recipients-colheaderanonymous" flex="1" hidden="true" type="checkbox"/>
+		  </treecols>
+		  <treechildren />
+		</tree>
+	 </row>
+    </rows>
+  </grid>
+ </groupbox>
+
+ </groupbox>
+ </vbox>
+<script type="application/x-javascript" src="chrome://exportwebdata/content/definetag.js"/>
+</dialog>

@@ -1,0 +1,83 @@
+@import url('tree.css');
+
+.swc-url2 {
+	font-weight: bold;
+}
+
+.swc-url2, .swc-url-normal {
+	color:blue;
+	text-decoration:underline;
+}
+.swc-url2:hover, .swc-url-normal:hover {
+	cursor:pointer;
+}
+
+.swc-small-button {
+	width: 2em;
+	min-width: 2em;
+}
+
+grid > rows row {
+	margin-top: 0.6em;
+}
+
+.swc-buttons-panel {
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+
+}
+
+#swc-ftp-recipients-panel #swc-ftp-recipients-grid rows row>label
+{
+	width: 5.5em;
+	min-width: 5.5em;
+	padding-top:.4em;
+}
+
+#swc-content-setup-panel #swc-content-setup-grid rows row>label 
+{
+	width: 8.5em;
+	min-width: 8.5em;
+	padding-top:.4em;
+}
+
+#swc-content-setup-panel>groupbox>vbox>label {
+	margin-top: 0.4em;	
+}
+
+#swc-content-setup-panel grid {
+	margin-top: 0.3em;
+}
+
+#swc-content-setup-panel grid > rows>row {
+	margin-top: 0em;
+}
+
+.help-h1 {
+	font-weight:bolder;
+	font-size:1.2em;
+	text-decoration:underline;
+	letter-spacing: 0.15em;
+}
+
+.help-h2 {
+	font-weight:bold;
+	font-size:1em;
+}
+
+.help-note {
+	padding-top: 0.6em;	
+	margin-bottom: 0.6em;	
+}
+
+.help-h1,.help-h2 {
+	padding-top:0.3em;
+}
+
+.smallicon {
+  background-image: url(chrome://exportwebdata/skin/btn_small.png);
+  width:16px;
+}
+.smallicon>span{
+	display:hidden;
+}

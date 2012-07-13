@@ -1,0 +1,9 @@
+<!ENTITY select-ftp-recipients-windowtitle	"ExportWebData - Select FTP Recipients">
+
+<!ENTITY gbcaption-recipients-ftp	"Recipients">
+
+<!ENTITY ftp-recipients-colheaderurl	"FTP Url">
+<!ENTITY ftp-recipients-colheaderpath	"FTP Path">
+<!ENTITY ftp-recipients-colheaderusername	"User Name">
+<!ENTITY ftp-recipients-colheaderpassword	"Password">
+<!ENTITY ftp-recipients-colheaderanonymous	"IsAnonymous">

@@ -1,0 +1,79 @@
+<!ENTITY windowtitle	"ExportWebData Options">
+<!ENTITY tab-program-settings-title	"Program Settings">
+<!ENTITY tab-email-recipients-title	"Email Recipients">
+<!ENTITY tab-ftp-recipients-title	"FTP Recipients">
+<!ENTITY tab-content-setup-title	"User Defined Content">
+<!ENTITY tab-help-title	"Help">
+
+<!ENTITY gbcaption-email	"Email Settings">
+<!ENTITY email-program-label1	"Please download, install ">
+<!ENTITY email-program-label2	" and specify the path to executable (exe) below.">
+<!ENTITY email-program-browse	"Browse">
+
+<!ENTITY email-smtp-address	"Outgoing mail server (SMTP)">
+<!ENTITY email-smtp-address-tooltip	"Address of your smtp server">
+<!ENTITY email-email-address	"Email address">
+<!ENTITY email-email-address-tooltip	"Email address on the smtp server. It is usually the username.">
+<!ENTITY email-email-name    "Name">
+<!ENTITY email-email-name-tooltip    "The name that email recipients will see as From">
+<!ENTITY email-email-password	"Password">
+<!ENTITY email-email-password-tooltip	"Password">
+<!ENTITY email-smtp-port	"Port (Default 25)">
+<!ENTITY email-email-port-tooltip	"Password">
+
+<!ENTITY gbcaption-ftp	"FTP Upload Program">
+<!ENTITY ftp-program-label1	"Please download, install ">
+<!ENTITY ftp-program-label2	" and specify the path to executable (exe) below.">
+<!ENTITY ftp-program-browse	"Browse">
+
+
+<!ENTITY gbcaption-email-recipients	"Email recipients:">
+<!ENTITY email-recipients-add	"Add">
+<!ENTITY email-recipients-edit	"Edit">
+<!ENTITY email-recipients-update	"Update">
+<!ENTITY email-recipients-editcancel	"Cancel">
+<!ENTITY email-recipients-delete	"Delete">
+<!ENTITY email-recipients-colheader	"Email Address">
+
+
+<!ENTITY gbcaption-ftp-recipients	"FTP recipients:">
+
+<!ENTITY ftp-recipients-url	"FTP Url">
+<!ENTITY ftp-recipients-path	"FTP Path">
+<!ENTITY ftp-recipients-username	"User Name">
+<!ENTITY ftp-recipients-password	"Password">
+
+<!ENTITY ftp-recipients-anonymous	"Anonymous Login">
+<!ENTITY ftp-recipients-forcetls	"SSL">
+<!ENTITY ftp-recipients-add	"Add">
+<!ENTITY ftp-recipients-edit	"Edit">
+<!ENTITY ftp-recipients-update	"Update">
+<!ENTITY ftp-recipients-editcancel	"Cancel">
+<!ENTITY ftp-recipients-delete	"Delete">
+
+<!ENTITY ftp-recipients-colheaderurl	"FTP Url">
+<!ENTITY ftp-recipients-colheaderpath	"FTP Path">
+<!ENTITY ftp-recipients-colheaderusername	"User Name">
+<!ENTITY ftp-recipients-colheaderpassword	"Password">
+<!ENTITY ftp-recipients-colheaderanonymous	"IsAnonymous">
+<!ENTITY ftp-recipients-colheaderanonymous	"SSL">
+
+
+
+<!ENTITY gbcaption-content-setup	"Content Setup">
+<!ENTITY content-setup-url	"Web Page Url">
+<!ENTITY content-setup-tag	"Content Tag">
+<!ENTITY content-setup-taghint	"(Leave this blank to send the whole page)">
+<!ENTITY content-setup-emailaddresses	"Email Address(es)">
+<!ENTITY content-setup-ftpurls	"FTP Upload Url(s)">
+
+<!ENTITY content-setup-add	"Add">
+<!ENTITY content-setup-edit	"Edit">
+<!ENTITY content-setup-delete	"Delete">
+<!ENTITY content-setup-update	"Update">
+<!ENTITY content-setup-editcancel	"Cancel">
+
+<!ENTITY content-setup-colheaderurl	"Page Url">
+<!ENTITY content-setup-colheadertag	"Tag">
+<!ENTITY content-setup-colheaderemails	"Email Recipients">
+<!ENTITY content-setup-colheaderftpurls	"FTP Urls">

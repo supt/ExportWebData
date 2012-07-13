@@ -1,0 +1,14 @@
+<!ENTITY exportwebdata-selectcommand-label	"Add to ExportWebData - Define Tag">
+<!ENTITY exportwebdata-sendcommand-label	"Export Data">
+<!ENTITY exportwebdata-optionscommand-label	"Options">
+
+<!ENTITY exportwebdata-toolsmenupopup-label	"ExportWebData">
+
+
+<!ENTITY exportwebdata-panel-title "Tag Selection Mode.">
+
+<!ENTITY exportwebdata-panel-hint1 "Notice that a hilight box appears when you move your mouse on the page.">
+<!ENTITY exportwebdata-panel-hint2 "Click any highlited item to select it as the tag for this page.">
+<!ENTITY exportwebdata-panel-hint3 "Press Esc key to exit tag selection mode.">
+
+
